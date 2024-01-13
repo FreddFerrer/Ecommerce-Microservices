@@ -31,7 +31,7 @@ services:
   ### MySQL database for Products
   db-products:
     container_name: db-products
-    image: 'mysql:8.0.33'
+    build: './products-service'
     environment:
       MYSQL_DATABASE: ms_products
       MYSQL_USER: freddy

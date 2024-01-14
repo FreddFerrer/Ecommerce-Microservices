@@ -30,13 +30,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public void addProduct(ProductRequest productRequest) {
-        var product = Product.builder()
-                .sku(productRequest.getSku())
-                .name(productRequest.getName())
-                .description(productRequest.getDescription())
-                .price(productRequest.getPrice())
-                .status(productRequest.getStatus())
-                .build();
+        Product product = productMapper.toProduct(productRequest);
 
         productRepository.save(product);
 

@@ -6,13 +6,9 @@ services:
     image: mysql:8.0.33
     environment:
       MYSQL_DATABASE: ms_inventory
-      MYSQL_USER: freddy
-      MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3307:3307
-    expose:
-      - 3307
+      - 3307:3306
 
   ### MySQL database for Orders
   db-orders:
@@ -20,13 +16,9 @@ services:
     image: mysql:8.0.33
     environment:
       MYSQL_DATABASE: ms_orders
-      MYSQL_USER: freddy
-      MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3308:3308
-    expose:
-      - 3308
+      - 3308:3306
 
   ### MySQL database for Products
   db-products:
@@ -34,8 +26,6 @@ services:
     image: mysql:8.0.33
     environment:
       MYSQL_DATABASE: ms_products
-      MYSQL_USER: freddy
-      MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3309:3306

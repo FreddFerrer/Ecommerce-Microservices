@@ -1,7 +1,6 @@
 package com.fredd.orders_service.services.impl;
 
 import com.fredd.orders_service.model.dtos.BaseResponse;
-import com.fredd.orders_service.model.dtos.OrderItemRequest;
 import com.fredd.orders_service.model.dtos.OrderRequest;
 import com.fredd.orders_service.model.dtos.OrderResponse;
 import com.fredd.orders_service.model.entities.Order;
@@ -37,7 +36,7 @@ public class OrderServiceImpl implements IOrderService {
         //Consulta al servicio de inventario
         BaseResponse result = this.webClientBuilder.build()
                 .post()
-                .uri("http://localhost:8083/api/inventory/in-stock")
+                .uri("lb://inventory-service/api/inventory/in-stock")
                 .bodyValue(orderRequest.getOrderItems())
                 .retrieve()
                 .bodyToMono(BaseResponse.class)

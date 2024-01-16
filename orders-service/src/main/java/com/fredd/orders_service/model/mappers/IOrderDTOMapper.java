@@ -18,6 +18,6 @@ public interface IOrderDTOMapper {
 
     OrderResponse toOrderResponse(Order order);
 
-    @Mapping(target = "id", ignore = true)  // Ignorar la propiedad id para evitar ambigüedades
-    OrderItems toOrderItem(OrderItemRequest orderItemRequest, @Context Order order);
+    @Mapping(target = "id", ignore = true)  // Let ID be generated automatically
+    OrderItems mapOrderItemRequestToOrderItem(OrderItemRequest orderItemRequest, Order order);
 }

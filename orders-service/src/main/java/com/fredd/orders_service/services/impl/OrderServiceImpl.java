@@ -52,7 +52,7 @@ public class OrderServiceImpl implements IOrderService {
 
         // Mapear cada OrderItemRequest a OrderItem usando MapStruct
         List<OrderItems> orderItems = orderRequest.getOrderItems().stream()
-                .map(orderItemRequest -> mapOrderItemRequestToOrderItem(orderItemRequest, order))
+                .map(orderItemRequest -> orderDTOMapper.mapOrderItemRequestToOrderItem(orderItemRequest, order))
                 .toList();
 
         order.setOrderItems(orderItems);
@@ -62,16 +62,5 @@ public class OrderServiceImpl implements IOrderService {
             throw new IllegalArgumentException("Some of the products are not in stock");
         }
     }
-
-    private OrderItems mapOrderItemRequestToOrderItem(OrderItemRequest orderItemRequest, Order order) {
-        return OrderItems.builder()
-                .id(orderItemRequest.getId())
-                .sku(orderItemRequest.getSku())
-                .price(orderItemRequest.getPrice())
-                .quantity(orderItemRequest.getQuantity())
-                .order(order)
-                .build();
-    }
-
 
 }

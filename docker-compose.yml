@@ -35,3 +35,38 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3309:3306
+
+  ### MySQL database for Keycloak
+  db-keycloak:
+    container_name: db-keycloak
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_keycloak
+      MYSQL_USER: freddy
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3310:3306
+
+    ### Keycloak
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:21.0.2
+    command: [ "start-dev" ]
+    ports:
+      - 8181:8181
+    expose:
+      - 8181
+    depends_on:
+      - db-keycloak
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db-keycloak
+      DB_DATABASE: db_keycloak
+      DB_PORT: 5433
+      DB_USER: uncledave
+      DB_PASSWORD: Test123
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_PORT: 8181

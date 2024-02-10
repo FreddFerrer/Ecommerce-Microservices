@@ -45,6 +45,24 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!--Integra la autenticacion y autorizacion basada en Oauth2.
+		Nos permite acceder a recursos protegidos a traves de proveedores de
+		autenticacion externos (keycloak)-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
+		<!--nos ayuda a solucionar y monitorear problemas en una aplicacion en produccion
+		en spring boot. Proporciona informacion en tiempo real-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 	</dependencies>
 

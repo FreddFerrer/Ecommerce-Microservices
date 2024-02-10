@@ -60,6 +60,19 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<!--Nos protege los endpoints y recursos de la app, asegurando que los clientes
+		autenticados y autorizados tengan acceso a ellos.-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
+		<!--nos ayuda a solucionar y monitorear problemas en una aplicacion en produccion
+		en spring boot. Proporciona informacion en tiempo real-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
